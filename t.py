@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.H = 0
         
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Horde Generator")
         MainWindow.resize(636, 597)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -100,7 +100,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.horde_output.setText(_translate("MainWindow", "TextLabel"))
+        self.horde_output.setText(_translate("MainWindow", ""))
         self.genHorde.setText(_translate("MainWindow", "Generate Horde"))
         self.label.setText(_translate("MainWindow", "Set Dungeon Difficulty"))
         self.label_2.setText(_translate("MainWindow", "Set Wage Disparity"))
@@ -131,16 +131,23 @@ class Ui_MainWindow(object):
         self.gen_bpower(self.wage_disp.value())
         self.gen_gold(self.dungeon_diff.value())
         #!!! Check this out, added recently
+        i = 1
         loot_amount = random.randint(1, 3)
+        inc = loot_amount
         loot_total = ""
         
-        while(loot_amount != 0):
+        while(inc != 0):
             loot = self.gen_loot(self.dungeon_diff.value())
-            loot_total += loot + ", "
-            loot_amount = loot_amount - 1
+            if(i == loot_amount):
+                loot_total += loot + ". "
+            else:
+                loot_total += loot + ", "
+            inc = inc - 1
+            i += 1
+            
 		
         print(loot_total)
-        self.horde_output.setText("The horde contains;" + "\n" + str(self.H) + " gold pieces." + "\n" + loot_total)
+        self.horde_output.setText("The horde contains:" + "\n" + str(self.H) + " gold pieces," + "\n" + loot_total)
         self.horde_output.setWordWrap(True)
         #self.horde_output.setText("The Button was Pressed" + "\n" + str(self.dungeon_diff.value()) + "\n" + str(self.wage_disp.value()))
         
