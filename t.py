@@ -99,8 +99,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.horde_output.setText(_translate("MainWindow", ""))
+        MainWindow.setWindowTitle(_translate("Horde Generator", "Horde Generator"))
+        self.horde_output.setText(_translate("Horde Generator", ""))
         self.genHorde.setText(_translate("MainWindow", "Generate Horde"))
         self.label.setText(_translate("MainWindow", "Set Dungeon Difficulty"))
         self.label_2.setText(_translate("MainWindow", "Set Wage Disparity"))
